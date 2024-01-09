@@ -96,7 +96,6 @@ if [ ! -e ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz ]; then
         fi
 
         TMP_IPADIC_HASH_VAL=`openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f 2`
-        echo "$ECHO_PREFIX Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz is '${TMP_IPADIC_HASH_VAL}'"
         if [ "${TMP_IPADIC_HASH_VAL}" != "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
             echo ""
             echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz don't match"
@@ -109,8 +108,7 @@ else
     echo "$ECHO_PREFIX Original mecab-ipadic file is already there."
 fi
 
-IPADIC_HASH_VAL=`openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f`
-echo "$ECHO_PREFIX Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz is '${IPADIC_HASH_VAL}'"
+IPADIC_HASH_VAL=`openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f 2`
 if [ "${IPADIC_HASH_VAL}" != "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
     echo "$ECHO_PREFIX Fail to download ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz"
     echo "$ECHO_PREFIX You should remove ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz before retrying to install mecab-ipadic-NEologd"
